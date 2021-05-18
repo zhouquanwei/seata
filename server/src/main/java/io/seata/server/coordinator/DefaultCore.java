@@ -309,6 +309,7 @@ public class DefaultCore implements Core {
                             LOGGER.info("Rollback branch transaction fail and stop retry, xid = {} branchId = {}", globalSession.getXid(), branchSession.getBranchId());
                             return false;
                         default:
+                            //我不知道为什么一直回滚重试
                             LOGGER.info("Rollback branch transaction fail and will retry, xid = {} branchId = {}", globalSession.getXid(), branchSession.getBranchId());
                             if (!retrying) {
                                 globalSession.queueToRetryRollback();
